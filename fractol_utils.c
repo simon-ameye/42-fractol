@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:08:10 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/05 18:58:40 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/05 23:32:11 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_complex square(t_complex c)
 	t_complex res;
 
 	res.r = c.r * c.r - c.i * c.i;
-	res.i = 2 * c.r * c.r;
+	res.i = 2 * c.r * c.i;
 	return (res);
 }
 
