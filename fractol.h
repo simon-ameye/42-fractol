@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/05 18:41:12 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/05 19:51:32 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef struct		s_pix
 {
 	double		x;
 	double		y;
-	double		r;
-	double		i;
 	int			iter;
 }					t_pix;
 
@@ -50,15 +48,16 @@ typedef struct		s_view
 }					t_view;
 
 
-#define WIN_Y 400
-#define WIN_X 600
+#define WIN_Y 300
+#define WIN_X 500
 #define WIN_NAME "fractol"
-#define MAX_ITER = 256
+#define MAX_ITER 256
 
 
 t_window init_window(void);
 t_complex square(t_complex c);
 t_complex mult(t_complex c1, t_complex c2);
+t_complex sum(t_complex c1, t_complex c2);
 double squaremodul(t_complex c);
 
 
