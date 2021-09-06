@@ -6,11 +6,12 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:55 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/06 20:17:38 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 00:21:21 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <time.h>
 
 int interpol (int x, int x0, int x1, int y0, int y1)
 {
@@ -87,8 +88,6 @@ int	key_hook(int keycode, t_mlx *mlx)
 	double sensib;
 
 	sensib = 0.1 / mlx->view.scale;
-	printf("Hello from key_hook!, %i, %f\n", keycode, sensib);
-
 	if (keycode == 126)
 		mlx->view.y -= sensib;
 	if (keycode == 125)
@@ -113,8 +112,13 @@ int main(void)
 
 	init_mlx(&mlx);
 	init_view(&mlx);
+		clock_t begin = clock();
 	drawfractal(&mlx);
+		clock_t end1 = clock();
+		printf("time1%f", (double)(end1 - begin) / CLOCKS_PER_SEC);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
+		clock_t end2 = clock();
+		printf("time2%f", (double)(end2 - begin) / CLOCKS_PER_SEC);
 	mlx_key_hook(mlx.win, key_hook, &mlx);
 	mlx_loop(mlx.mlx_ptr);
 }

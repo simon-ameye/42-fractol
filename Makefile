@@ -6,7 +6,7 @@
 #    By: sameye <sameye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/03 14:02:57 by sameye            #+#    #+#              #
-#    Updated: 2021/09/03 19:10:47 by sameye           ###   ########.fr        #
+#    Updated: 2021/09/06 23:58:20 by sameye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS += fractol_utils.c
 OBJS_DIR = obj/
 OBJS = $(addprefix $(OBJS_DIR),$(SRCS:.c=.o))
 
-CC = gcc -Wall -Wextra -Werror
+CC = gcc -Wall -Wextra -Werror -O3
 
 MLX_DIR = ./mlx/
 MLX_LIB	= $(MLX_DIR)libmlx.a
