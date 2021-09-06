@@ -6,21 +6,36 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:55 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/05 23:50:14 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:50:17 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	set_color (t_pix p)
+int	create_trgb(int r, int g, int b)
 {
-	(void) p;
-	return (0x00);
+	return (r << 16 | g << 8 | b);
 }
 
-int	iter2color(t_pix p)
+int interpol (int x, int x0, int x1, int y0, int y1)
 {
-	return ((unsigned int) p.iter);
+	if (x <= x0)
+		return (y0);
+	if (x >= x1)
+		return (y1);
+	return (y0 + (x - x0) * (y1 - y0) / (x1 - x0));
+}
+
+int	iter2color(int i)
+{
+	int r;
+	int g;
+	int b;
+
+	b = interpol(i, MAX_ITER * 0 / 3, MAX_ITER * 1 / 3, 255, 0);
+	g = interpol(i, MAX_ITER * 1 / 3, MAX_ITER * 2 / 3, 255, 0);
+	r = interpol(i, MAX_ITER * 2 / 3, MAX_ITER * 3 / 3, 255, 0);
+	return (create_trgb(r, g, b));
 }
 
 void	my_mlx_pixel_put(t_window *window, int x, int y, int color)
@@ -35,7 +50,6 @@ t_complex pixtocplx(t_pix p, t_view view)
 {
 	t_complex res;
 
-	//printf("r%fr%f\n", res.r, res.i);
 	res.r = 1.5 * (p.x - WIN_X / 2) / (0.5 * view.scale * WIN_X) + view.x;
 	res.i = (p.y - WIN_Y / 2) / (0.5 * view.scale * WIN_Y) + view.y;
 	return (res);
@@ -44,28 +58,21 @@ t_complex pixtocplx(t_pix p, t_view view)
 int main(void)
 {
 	t_window window;
-
 	t_complex z;
 	t_complex c;
 	t_view view;
 	t_pix p;
 	double modul;
-	int max_iter;
-	int color;
 
 	window = init_window();
 	
 	p.x = 0;
-	p.y = 0;
 	c.r = -0.5;
 	c.i = 0.5;
 	modul = 2;
-	view.scale = 1.0;
+	view.scale = 2.0;
 	view.x = 0;
 	view.y = 0;
-	max_iter = 0;
-
-	//my_mlx_pixel_put(&window, 5, 5, 0x00FF0000);
 
 	while (p.x < WIN_X)
 	{
@@ -82,16 +89,12 @@ int main(void)
 					break;
 				p.iter++;
 			}
-			color = p.iter;
 			//printf("iter%i\n", p.iter);
-			my_mlx_pixel_put(&window, p.x, p.y, color);
+			my_mlx_pixel_put(&window, p.x, p.y, iter2color(p.iter));
 			p.y++;
-			if (p.iter > max_iter)
-				max_iter = p.iter;
 		}
 		p.x++;
 	}
-	printf("max%i", max_iter);
 	mlx_put_image_to_window(window.mlx, window.mlx_win, window.img, 0, 0);
 	mlx_loop(window.mlx);
 }

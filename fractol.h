@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/05 23:44:36 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/06 14:44:49 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct		s_view
 #define WIN_X 900
 #define WIN_Y 600
 #define WIN_NAME "fractol"
-#define MAX_ITER 255
+#define MAX_ITER 32
 
 
 t_window init_window(void);
