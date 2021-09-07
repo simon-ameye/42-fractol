@@ -6,7 +6,7 @@
 #    By: sameye <sameye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/03 14:02:57 by sameye            #+#    #+#              #
-#    Updated: 2021/09/07 22:55:47 by sameye           ###   ########.fr        #
+#    Updated: 2021/09/07 23:01:31 by sameye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ LFT_LNK = -L $(LFT_DIR) -l ft
 
 all: $(NAME)
 
-$(NAME) : $(OBJS) $(MLX_LIB)
+$(NAME) : $(OBJS) $(MLX_LIB) $(LFT_LIB)
 	$(CC) $(OBJS) $(MLX_LNK) $(LFT_LNK) -lm -o $(NAME)
 
 $(OBJS): $(OBJS_DIR)%.o: %.c $(OBJS_DIR)
@@ -61,10 +61,11 @@ bonus : all
 clean:
 	rm -rf $(OBJS)
 	$(MAKE) clean -C $(MLX_DIR)
+	$(MAKE) clean -C $(LFT_DIR)
 
 fclean: clean
 	rm -rf $(NAME)
-	$(MAKE) re -C $(MLX_DIR)
+	$(MAKE) fclean -C $(LFT_DIR)
 
 re: fclean all
 
