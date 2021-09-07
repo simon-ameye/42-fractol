@@ -6,7 +6,7 @@
 #    By: sameye <sameye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/03 14:02:57 by sameye            #+#    #+#              #
-#    Updated: 2021/09/07 22:35:13 by sameye           ###   ########.fr        #
+#    Updated: 2021/09/07 22:39:55 by sameye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ MLX_DIR = ./mlx/
 MLX_LIB	= $(MLX_DIR)libmlx.a
 #MLX_LNK = -L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
 
-ifeq ($(OS), Linux)
+ifeq ($(shell uname), Linux)
 	MLX_LNK	= -L $(MLX_DIR) -l mlx -lXext -lX11
 else
 	MLX_LNK	= -L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
