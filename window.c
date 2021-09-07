@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:50 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 11:57:20 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 21:31:09 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,17 @@ void init_view(t_mlx *mlx)
 {
 	mlx->view.scale = 1;
 	mlx->view.x = 0;
+	if (mlx->frac.frac == 'm')
+		mlx->view.x = -0.66;
 	mlx->view.y = 0;
+}
+int destroy(t_mlx *mlx)
+{
+	if (mlx->win != NULL)
+		mlx_destroy_window(mlx->mlx_ptr, mlx->win);
+	if (mlx->img.img_ptr != NULL)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
+	free (mlx->mlx_ptr);
+		exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -6,21 +6,12 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:55 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 12:33:35 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 22:18:26 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <time.h>
-
-t_complex pixtocplx(t_pix *p, t_mlx *mlx)
-{
-	t_complex res;
-
-	res.r = 1.5 * (p->x - WIN_W / 2) / (0.5 * mlx->view.scale * WIN_W) + mlx->view.x;
-	res.i = (p->y - WIN_H / 2) / (0.5 * mlx->view.scale * WIN_H) + mlx->view.y;
-	return (res);
-}
 
 void setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p)
 {
@@ -76,6 +67,10 @@ int main(int ac, char **av)
 	init_view(&mlx);
 	drawfractal(&mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
-	mlx_key_hook(mlx.win, key_hook, &mlx);
+
+	mlx_key_hook(mlx.win, keyboard_press, &mlx);
+	mlx_hook(mlx.win, 4, 1L << 2, mouse_press, &mlx);
+	mlx_hook(mlx.win, 17, 1L << 2, destroy_press, &mlx);
+
 	mlx_loop(mlx.mlx_ptr);
 }

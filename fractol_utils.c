@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:08:10 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 11:27:32 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 14:43:46 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ t_complex mult(t_complex c1, t_complex c2)
 
 double squaremodul(t_complex c)
 {
-	double res;
-
-	res = c.r * c.r + c.i * c.i;
-	return (res);
+	return (c.r * c.r + c.i * c.i);
 }
 
 t_complex sum(t_complex c1, t_complex c2)

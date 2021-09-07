@@ -6,17 +6,17 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:48:45 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 12:43:02 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 22:22:55 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	key_hook(int keycode, t_mlx *mlx)
+int	keyboard_press(int keycode, t_mlx *mlx)
 {
 	double sensib;
 
-	printf("pressed:%i\n", keycode);
+	printf("keyboard:%i\n", keycode);
 	sensib = 0.1 / mlx->view.scale;
 	if (keycode == 126)
 		mlx->view.y -= sensib;
@@ -34,14 +34,31 @@ int	key_hook(int keycode, t_mlx *mlx)
 		init_view(mlx);
 	if (keycode == 53)
 	{
-		if (mlx->win != NULL)
-			mlx_destroy_window(mlx->mlx_ptr, mlx->win);
-		if (mlx->img.img_ptr != NULL)
-			mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
-		exit(EXIT_SUCCESS);
-		return (0);
+		destroy(mlx);
+		return(EXIT_SUCCESS);
 	}
 	drawfractal(mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img.img_ptr, 0, 0);
-	return (1);
+	return(EXIT_SUCCESS);
+}
+
+int mouse_press(int keycode, int x, int y, t_mlx *mlx)
+{
+	printf("mouse : %i, %i, %i\n", keycode, x, y);
+	if (keycode == 4)
+		mlx->view.scale *= 1.1;
+	if (keycode == 5)
+		mlx->view.scale *= 0.9;
+	drawfractal(mlx);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img.img_ptr, 0, 0);
+	return (EXIT_SUCCESS);
+}
+
+int destroy_press(int keycode, int x, int y, t_mlx *mlx)
+{
+	(void) keycode;
+	(void) x;
+	(void) y;
+	(void) mlx;
+	exit(EXIT_SUCCESS);
 }

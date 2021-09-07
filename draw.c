@@ -6,12 +6,20 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:50:26 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 11:51:29 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 14:46:52 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+t_complex pixtocplx(t_pix *p, t_mlx *mlx)
+{
+	t_complex res;
+
+	res.r = 1.5 * (p->x - WIN_W / 2) / (0.5 * mlx->view.scale * WIN_W) + mlx->view.x;
+	res.i = (p->y - WIN_H / 2) / (0.5 * mlx->view.scale * WIN_H) + mlx->view.y;
+	return (res);
+}
 
 void itercplx(t_pix *p, t_mlx *mlx)
 {
@@ -22,7 +30,7 @@ void itercplx(t_pix *p, t_mlx *mlx)
 	while (p->iter < MAX_ITER)
 	{
 		z = sum(square(z), c);
-		if( squaremodul(z) > MODUL * MODUL)
+		if( squaremodul(z) >= MODUL)
 			break;
 		p->iter++;
 	}

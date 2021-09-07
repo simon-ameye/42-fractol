@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 12:17:31 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 22:21:06 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ typedef struct		s_pix
 #define WIN_H 600
 #define WIN_NAME "fractol"
 #define PARAM_LIST "Available parameters list :\nmandelbrot\njulia\n"
-#define MAX_ITER 255
+#define MAX_ITER 32
 #define C_RE -0.5
 #define C_IM 0.5
-#define MODUL 2
+#define MODUL 4
 
 t_complex pixtocplx(t_pix *p, t_mlx *mlx);
 void setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p);
@@ -87,5 +87,14 @@ t_complex zerocplx(void);
 void init_mlx(t_mlx *mlx);
 void init_view(t_mlx *mlx);
 int entrycheck(int ac, char **av, t_mlx *mlx);
+
+int	keyboard_press(int keycode, t_mlx *mlx);
+int mouse_press(int keycode, int x, int y, t_mlx *mlx);
+int destroy_press(int keycode, int x, int y, t_mlx *mlx);
+int destroy(t_mlx *mlx);
+
+
+
+
 
 #endif
