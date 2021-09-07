@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 00:06:45 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 11:34:30 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,18 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 
+typedef struct	s_frac
+{
+	char		frac;
+}				t_frac;
+
 typedef struct	s_mlx
 {
 	void		*mlx_ptr;
 	void		*win;
 	t_img		img;
 	t_view		view;
+	t_frac		frac;
 }				t_mlx;
 
 typedef struct		s_complex
@@ -57,7 +63,7 @@ typedef struct		s_pix
 #define WIN_W 900
 #define WIN_H 600
 #define WIN_NAME "fractol"
-#define MAX_ITER 32
+#define MAX_ITER 255
 #define C_RE -0.5
 #define C_IM 0.5
 #define MODUL 2
@@ -67,6 +73,7 @@ void init_mlx(t_mlx *mlx);
 t_complex square(t_complex c);
 t_complex mult(t_complex c1, t_complex c2);
 t_complex sum(t_complex c1, t_complex c2);
+t_complex zerocplx(void);
 double squaremodul(t_complex c);
 
 

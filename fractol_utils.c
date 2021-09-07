@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:08:10 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/05 23:32:11 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 11:27:32 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,14 @@ t_complex sum(t_complex c1, t_complex c2)
 
 	res.r = c1.r + c2.r;
 	res.i = c1.i + c2.i;
+	return (res);
+}
+
+t_complex zerocplx(void)
+{
+	t_complex res;
+
+	res.r = 0;
+	res.i = 0;
 	return (res);
 }

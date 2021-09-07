@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:55 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 00:21:21 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 11:33:27 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,29 @@ t_complex pixtocplx(t_pix *p, t_mlx *mlx)
 	return (res);
 }
 
+void setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p)
+{
+	if (mlx->frac.frac == 'm')
+	{
+		*z = zerocplx();
+		*c = pixtocplx(p, mlx);
+	}
+	if (mlx->frac.frac == 'j')
+	{
+		*z = pixtocplx(p, mlx);
+		*c = (t_complex){.r = C_RE, .i = C_IM};
+	}
+}
+
 void itercplx(t_pix *p, t_mlx *mlx)
 {
 	t_complex z;
-
+	t_complex c;
+	setfracttype(mlx, &z, &c, p);
 	p->iter = 0;
-	z = pixtocplx(p, mlx);
 	while (p->iter < MAX_ITER)
 	{
-		z = sum(square(z), (t_complex){.r = C_RE, .i = C_IM});
+		z = sum(square(z), c);
 		if( squaremodul(z) > MODUL * MODUL)
 			break;
 		p->iter++;
@@ -100,16 +114,33 @@ int	key_hook(int keycode, t_mlx *mlx)
 		mlx->view.scale *= 1.1;
 	if (keycode == 24)
 		mlx->view.scale *= 0.9;
-	//mlx->view.scale = mlx->view.scale * 1.5;
 	drawfractal(mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img.img_ptr, 0, 0);
 	return (1);
 }
+int fracparse(char * frac, t_mlx *mlx)
+{
+	if (ft_strncmp(frac, "julia", ft_strlen("julia") + 1) == 0)
+	{
+		mlx->frac.frac = 'j';
+		return (1);
+	}
+	if (ft_strncmp(frac, "mandelbrot", ft_strlen("mandelbrot") + 1) == 0)
+	{
+		mlx->frac.frac = 'm';
+		return (1);
+	}
+	return (0);
+}
 
-int main(void)
+int main(int ac, char **av)
 {
 	t_mlx mlx;
 
+	if (ac < 2)
+		return (0);
+	if (fracparse(av[1], &mlx) == 0)
+		return (0);
 	init_mlx(&mlx);
 	init_view(&mlx);
 		clock_t begin = clock();
