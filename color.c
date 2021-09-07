@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/03 14:02:50 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 11:57:20 by sameye           ###   ########.fr       */
+/*   Created: 2021/09/07 11:51:51 by sameye            #+#    #+#             */
+/*   Updated: 2021/09/07 11:52:32 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void init_mlx(t_mlx *mlx)
+int interpol (int x, int x0, int x1, int y0, int y1)
 {
-	mlx->mlx_ptr = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx_ptr, WIN_W, WIN_H, WIN_NAME);
-	mlx->img.img_ptr = mlx_new_image(mlx->mlx_ptr, WIN_W, WIN_H);
-	mlx->img.data = (int *)mlx_get_data_addr(mlx->img.img_ptr, &mlx->img.bpp, &mlx->img.size_l,
-		&mlx->img.endian);
+	if (x <= x0)
+		return (y0);
+	if (x >= x1)
+		return (y1);
+	return (y0 + (x - x0) * (y1 - y0) / (x1 - x0));
 }
 
-void init_view(t_mlx *mlx)
+int	itertocolor(int i)
 {
-	mlx->view.scale = 1;
-	mlx->view.x = 0;
-	mlx->view.y = 0;
+	int r;
+	int g;
+	int b;
+
+	b = interpol(i, MAX_ITER * 0 / 3, MAX_ITER * 1 / 3, 255, 0);
+	g = interpol(i, MAX_ITER * 1 / 3, MAX_ITER * 2 / 3, 255, 0);
+	r = interpol(i, MAX_ITER * 2 / 3, MAX_ITER * 3 / 3, 255, 0);
+	return (r << 16 | g << 8 | b);
 }

@@ -6,7 +6,7 @@
 #    By: sameye <sameye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/03 14:02:57 by sameye            #+#    #+#              #
-#    Updated: 2021/09/06 23:58:20 by sameye           ###   ########.fr        #
+#    Updated: 2021/09/07 11:53:16 by sameye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,9 @@ INC = fractol.h
 SRCS += fractol.c
 SRCS += window.c
 SRCS += fractol_utils.c
+SRCS += hook.c
+SRCS += color.c
+SRCS += draw.c
 
 OBJS_DIR = obj/
 OBJS = $(addprefix $(OBJS_DIR),$(SRCS:.c=.o))

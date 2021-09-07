@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 11:34:30 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/07 12:17:31 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,29 @@ typedef struct		s_pix
 #define WIN_W 900
 #define WIN_H 600
 #define WIN_NAME "fractol"
+#define PARAM_LIST "Available parameters list :\nmandelbrot\njulia\n"
 #define MAX_ITER 255
 #define C_RE -0.5
 #define C_IM 0.5
 #define MODUL 2
 
-
-void init_mlx(t_mlx *mlx);
+t_complex pixtocplx(t_pix *p, t_mlx *mlx);
+void setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p);
+int fracparse(char * frac, t_mlx *mlx);
+int main(int ac, char **av);
+int interpol (int x, int x0, int x1, int y0, int y1);
+int	itertocolor(int i);
+int	key_hook(int keycode, t_mlx *mlx);
+void itercplx(t_pix *p, t_mlx *mlx);
+void drawfractal(t_mlx *mlx);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 t_complex square(t_complex c);
 t_complex mult(t_complex c1, t_complex c2);
+double squaremodul(t_complex c);
 t_complex sum(t_complex c1, t_complex c2);
 t_complex zerocplx(void);
-double squaremodul(t_complex c);
-
-
+void init_mlx(t_mlx *mlx);
+void init_view(t_mlx *mlx);
+int entrycheck(int ac, char **av, t_mlx *mlx);
 
 #endif
