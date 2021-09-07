@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:48:45 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 22:22:55 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 00:03:42 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ int	keyboard_press(int keycode, t_mlx *mlx)
 
 	printf("keyboard:%i\n", keycode);
 	sensib = 0.1 / mlx->view.scale;
-	if (keycode == 126)
+	if (keycode == 126 || keycode == 65362)
 		mlx->view.y -= sensib;
-	if (keycode == 125)
+	if (keycode == 125 || keycode == 65364)
 		mlx->view.y += sensib;
-	if (keycode == 123)
+	if (keycode == 123 || keycode == 65361)
 		mlx->view.x -= sensib;
-	if (keycode == 124)
+	if (keycode == 124 || keycode == 65363)
 		mlx->view.x += sensib;
-	if (keycode == 44)
+	if (keycode == 44 || keycode == 61)
 		mlx->view.scale *= 1.1;
-	if (keycode == 24)
+	if (keycode == 24 || keycode == 45)
 		mlx->view.scale *= 0.9;
-	if (keycode == 49)
+	if (keycode == 49 || keycode == 32)
 		init_view(mlx);
-	if (keycode == 53)
+	if (keycode == 53 || keycode == 65307)
 	{
 		destroy(mlx);
 		return(EXIT_SUCCESS);
