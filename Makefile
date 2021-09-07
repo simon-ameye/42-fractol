@@ -6,7 +6,7 @@
 #    By: sameye <sameye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/03 14:02:57 by sameye            #+#    #+#              #
-#    Updated: 2021/09/07 22:39:55 by sameye           ###   ########.fr        #
+#    Updated: 2021/09/07 22:55:47 by sameye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ CC = gcc -Wall -Wextra -Werror -O3
 
 MLX_DIR = ./mlx/
 MLX_LIB	= $(MLX_DIR)libmlx.a
-#MLX_LNK = -L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
-
 ifeq ($(shell uname), Linux)
 	MLX_LNK	= -L $(MLX_DIR) -l mlx -lXext -lX11
+	MLX_DIR = ./mlx_x11/
 else
 	MLX_LNK	= -L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
+	MLX_DIR = ./mlx_opengl/
 endif
 
 LFT_DIR = ./libft/
