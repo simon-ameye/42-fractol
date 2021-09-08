@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:48:45 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 17:32:34 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 18:30:40 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ int	keyboard_press(int keycode, t_mlx *mlx)
 	double	sensib;
 
 	sensib = 0.1 / mlx->view.scale;
-	if (keycode == 126 || keycode == 65362)
+	if (keycode == KEY_UP_M || keycode == KEY_UP_L)
 		mlx->view.y -= sensib;
-	if (keycode == 125 || keycode == 65364)
+	if (keycode == KEY_DOWN_M || keycode == KEY_DOWN_L)
 		mlx->view.y += sensib;
-	if (keycode == 123 || keycode == 65361)
+	if (keycode == KEY_LEFT_M || keycode == KEY_LEFT_L)
 		mlx->view.x -= sensib;
-	if (keycode == 124 || keycode == 65363)
+	if (keycode == KEY_RIGHT_M || keycode == KEY_RIGHT_L)
 		mlx->view.x += sensib;
-	if (keycode == 44 || keycode == 61)
+	if (keycode == KEY_PLUS_M || keycode == KEY_PLUS_L)
 		mlx->view.scale *= 1.1;
-	if (keycode == 24 || keycode == 45)
+	if (keycode == KEY_MINUS_M || keycode == KEY_MINUS_L)
 		mlx->view.scale *= 0.9;
-	if (keycode == 49 || keycode == 32)
+	if (keycode == KEY_SPACE_M || keycode == KEY_SPACE_L)
 		init_view(mlx);
-	if (keycode == 53 || keycode == 65307)
+	if (keycode == KEY_ESC_M || keycode == KEY_ESC_L)
 	{
 		destroy(mlx);
 		return (EXIT_SUCCESS);

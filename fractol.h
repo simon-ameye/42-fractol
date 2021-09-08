@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 16:31:25 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 18:31:22 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,32 @@
 
 # include	"mlx.h"
 # include	"libft.h"
+
+# define KEY_UP_M 126
+# define KEY_UP_L 65362
+# define KEY_DOWN_M 125
+# define KEY_DOWN_L 65364
+# define KEY_LEFT_M 123
+# define KEY_LEFT_L 65361
+# define KEY_RIGHT_M 124
+# define KEY_RIGHT_L 65363
+# define KEY_PLUS_M 44
+# define KEY_PLUS_L 61
+# define KEY_MINUS_M 24
+# define KEY_MINUS_L 45
+# define KEY_SPACE_M 49
+# define KEY_SPACE_L 32
+# define KEY_ESC_M 53
+# define KEY_ESC_L 65307
+
+# define WIN_W 900
+# define WIN_H 600
+# define WIN_NAME "fractol"
+# define PARAM_LIST "Available parameters list :\nmandelbrot\njulia\n"
+# define MAX_ITER 32
+# define C_RE -0.5
+# define C_IM 0.5
+# define MODUL 4
 
 typedef struct s_view
 {
@@ -66,15 +92,6 @@ typedef struct s_interp
 	int	y0;
 	int	y1;
 }	t_interp;
-
-# define WIN_W 900
-# define WIN_H 600
-# define WIN_NAME "fractol"
-# define PARAM_LIST "Available parameters list :\nmandelbrot\njulia\n"
-# define MAX_ITER 32
-# define C_RE -0.5
-# define C_IM 0.5
-# define MODUL 4
 
 t_complex	pixtocplx(t_pix *p, t_mlx *mlx);
 void		setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p);
