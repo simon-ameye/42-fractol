@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:48:45 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 15:57:25 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 16:30:47 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	keyboard_press(int keycode, t_mlx *mlx)
 		destroy(mlx);
 		return (EXIT_SUCCESS);
 	}
-	drawfractal(mlx);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img.img_ptr, 0, 0);
+	computeprint(mlx);
 	return (EXIT_SUCCESS);
 }
 
@@ -48,8 +47,7 @@ int	mouse_press(int keycode, int x, int y, t_mlx *mlx)
 		mlx->view.scale *= 1.1;
 	if (keycode == 5)
 		mlx->view.scale *= 0.9;
-	drawfractal(mlx);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img.img_ptr, 0, 0);
+	computeprint(mlx);
 	return (EXIT_SUCCESS);
 }
 

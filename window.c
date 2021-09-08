@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:50 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 16:03:14 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 16:30:16 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,10 @@ int	destroy(t_mlx *mlx)
 	free (mlx->mlx_ptr);
 	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
+}
+
+void	computeprint(t_mlx *mlx)
+{
+	drawfractal(mlx);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img.img_ptr, 0, 0);
 }
