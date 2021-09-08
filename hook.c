@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:48:45 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 16:30:47 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 17:32:34 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	keyboard_press(int keycode, t_mlx *mlx)
 
 int	mouse_press(int keycode, int x, int y, t_mlx *mlx)
 {
-	printf("mouse : %i, %i, %i\n", keycode, x, y);
+	(void) x;
+	(void) y;
 	if (keycode == 4)
 		mlx->view.scale *= 1.1;
 	if (keycode == 5)

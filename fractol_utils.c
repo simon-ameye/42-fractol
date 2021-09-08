@@ -6,11 +6,12 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:08:10 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 16:18:32 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 17:33:43 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
 t_complex	csquare(t_complex c)
 {
 	t_complex	res;
