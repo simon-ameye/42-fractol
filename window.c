@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:50 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 16:30:16 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 18:53:50 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,10 @@ void	init_view(t_mlx *mlx)
 
 int	destroy(t_mlx *mlx)
 {
-	if (mlx->win != NULL)
-		mlx_destroy_window(mlx->mlx_ptr, mlx->win);
-	if (mlx->img.img_ptr != NULL)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
-	free (mlx->mlx_ptr);
+	mlx_destroy_window(mlx->mlx_ptr, mlx->win);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
+	free(mlx->mlx_ptr);
 	exit(EXIT_SUCCESS);
-	return (EXIT_SUCCESS);
 }
 
 void	computeprint(t_mlx *mlx)

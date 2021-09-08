@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:48:45 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 18:30:40 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 18:51:17 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,4 @@ int	mouse_press(int keycode, int x, int y, t_mlx *mlx)
 		mlx->view.scale *= 0.9;
 	computeprint(mlx);
 	return (EXIT_SUCCESS);
-}
-
-int	destroy_press(int keycode, int x, int y, t_mlx *mlx)
-{
-	(void) keycode;
-	(void) x;
-	(void) y;
-	(void) mlx;
-	exit(EXIT_SUCCESS);
 }
