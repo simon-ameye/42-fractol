@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 18:50:38 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 19:00:47 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ int			entrycheck(int ac, char **av, t_mlx *mlx);
 int			keyboard_press(int keycode, t_mlx *mlx);
 int			mouse_press(int keycode, int x, int y, t_mlx *mlx);
 int			destroy(t_mlx *mlx);
-void		computeprint(t_mlx *mlx);
+int			computeprint(t_mlx *mlx);
 
 #endif
