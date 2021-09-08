@@ -6,7 +6,7 @@
 #    By: sameye <sameye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/03 14:02:57 by sameye            #+#    #+#              #
-#    Updated: 2021/09/08 17:46:08 by sameye           ###   ########.fr        #
+#    Updated: 2021/09/08 19:18:49 by sameye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS += draw.c
 OBJS_DIR = obj/
 OBJS = $(addprefix $(OBJS_DIR),$(SRCS:.c=.o))
 
-CC = gcc -Wall -Wextra -Werror -O3
+CC = gcc -Wall -Wextra -Werror
 
 MLX_LIB	= $(MLX_DIR)libmlx.a
 ifeq ($(shell uname), Linux)

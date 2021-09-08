@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:55 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 18:59:49 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 19:34:09 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int	main(int ac, char **av)
 	mlx_hook(mlx.win, 4, 1L << 2, mouse_press, &mlx);
 	mlx_hook(mlx.win, 17, 1L << 2, destroy, &mlx);
 	mlx_hook(mlx.win, 15, 1L << 2, computeprint, &mlx);
+	mlx_hook(mlx.win, 12, 1L << 15, computeprint, &mlx);
 	mlx_loop(mlx.mlx_ptr);
 }
