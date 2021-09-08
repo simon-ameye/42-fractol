@@ -6,18 +6,18 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:55 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/07 22:18:26 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 16:19:29 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <time.h>
 
-void setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p)
+void	setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p)
 {
 	if (mlx->frac.frac == 'm')
 	{
-		*z = zerocplx();
+		*z = czerocplx();
 		*c = pixtocplx(p, mlx);
 	}
 	if (mlx->frac.frac == 'j')
@@ -27,7 +27,7 @@ void setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p)
 	}
 }
 
-int fracparse(char * frac, t_mlx *mlx)
+int	fracparse(char *frac, t_mlx *mlx)
 {
 	if (ft_strncmp(frac, "julia", ft_strlen("julia") + 1) == 0)
 	{
@@ -42,7 +42,7 @@ int fracparse(char * frac, t_mlx *mlx)
 	return (0);
 }
 
-int entrycheck(int ac, char **av, t_mlx *mlx)
+int	entrycheck(int ac, char **av, t_mlx *mlx)
 {
 	if (ac < 2)
 	{
@@ -57,9 +57,9 @@ int entrycheck(int ac, char **av, t_mlx *mlx)
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_mlx mlx;
+	t_mlx	mlx;
 
 	if (entrycheck(ac, av, &mlx) == 0)
 		return (0);
@@ -67,10 +67,8 @@ int main(int ac, char **av)
 	init_view(&mlx);
 	drawfractal(&mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
-
 	mlx_key_hook(mlx.win, keyboard_press, &mlx);
 	mlx_hook(mlx.win, 4, 1L << 2, mouse_press, &mlx);
 	mlx_hook(mlx.win, 17, 1L << 2, destroy_press, &mlx);
-
 	mlx_loop(mlx.mlx_ptr);
 }

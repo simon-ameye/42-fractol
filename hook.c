@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 11:48:45 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 00:03:42 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/08 15:57:25 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	keyboard_press(int keycode, t_mlx *mlx)
 {
-	double sensib;
+	double	sensib;
 
-	printf("keyboard:%i\n", keycode);
 	sensib = 0.1 / mlx->view.scale;
 	if (keycode == 126 || keycode == 65362)
 		mlx->view.y -= sensib;
@@ -35,14 +34,14 @@ int	keyboard_press(int keycode, t_mlx *mlx)
 	if (keycode == 53 || keycode == 65307)
 	{
 		destroy(mlx);
-		return(EXIT_SUCCESS);
+		return (EXIT_SUCCESS);
 	}
 	drawfractal(mlx);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img.img_ptr, 0, 0);
-	return(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
-int mouse_press(int keycode, int x, int y, t_mlx *mlx)
+int	mouse_press(int keycode, int x, int y, t_mlx *mlx)
 {
 	printf("mouse : %i, %i, %i\n", keycode, x, y);
 	if (keycode == 4)
@@ -54,7 +53,7 @@ int mouse_press(int keycode, int x, int y, t_mlx *mlx)
 	return (EXIT_SUCCESS);
 }
 
-int destroy_press(int keycode, int x, int y, t_mlx *mlx)
+int	destroy_press(int keycode, int x, int y, t_mlx *mlx)
 {
 	(void) keycode;
 	(void) x;
