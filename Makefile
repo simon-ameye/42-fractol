@@ -6,7 +6,7 @@
 #    By: sameye <sameye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/03 14:02:57 by sameye            #+#    #+#              #
-#    Updated: 2021/09/08 16:20:03 by sameye           ###   ########.fr        #
+#    Updated: 2021/09/08 17:46:08 by sameye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,13 @@ OBJS = $(addprefix $(OBJS_DIR),$(SRCS:.c=.o))
 
 CC = gcc -Wall -Wextra -Werror -O3
 
-MLX_DIR = ./mlx/
 MLX_LIB	= $(MLX_DIR)libmlx.a
 ifeq ($(shell uname), Linux)
-	MLX_LNK	= -L $(MLX_DIR) -l mlx -lXext -lX11
 	MLX_DIR = ./mlx_x11/
+	MLX_LNK	= -L $(MLX_DIR) -l mlx -lXext -lX11
 else
-	MLX_LNK	= -L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
 	MLX_DIR = ./mlx_opengl/
+	MLX_LNK	= -L $(MLX_DIR) -l mlx -framework OpenGL -framework AppKit
 endif
 
 LFT_DIR = ./libft/
