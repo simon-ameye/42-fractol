@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:52 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 19:23:49 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/10 19:27:13 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@
 # define WIN_W 900
 # define WIN_H 600
 # define WIN_NAME "fractol"
-# define PARAM_LIST "Available parameters list :\nmandelbrot\njulia\n"
+# define PARAM_LIST1 "Available parameters :\n"
+# define PARAM_LIST2 "[1] : fractal type : 'mandelbrot' or 'julia'\n"
+# define PARAM_LIST3 "[2] : julia C_RE (-100 <= C_RE < 100)\n"
+# define PARAM_LIST4 "[3] : julia C_IM (0 <= C_IM < 100)"
 # define MAX_ITER 32
+
 # define C_RE -0.5
 # define C_IM 0.5
 # define MODUL 4
@@ -61,6 +65,8 @@ typedef struct s_img
 typedef struct s_frac
 {
 	char	frac;
+	double	c_re;
+	double	c_im;
 }	t_frac;
 
 typedef struct s_mlx
@@ -115,5 +121,7 @@ int			keyboard_press(int keycode, t_mlx *mlx);
 int			mouse_press(int keycode, int x, int y, t_mlx *mlx);
 int			destroy(t_mlx *mlx);
 int			computeprint(t_mlx *mlx);
+void		get_params(int ac, char **av, t_mlx *mlx);
+int			print_params(void);
 
 #endif

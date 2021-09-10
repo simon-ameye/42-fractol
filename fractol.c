@@ -6,7 +6,7 @@
 /*   By: sameye <sameye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 14:02:55 by sameye            #+#    #+#             */
-/*   Updated: 2021/09/08 19:34:09 by sameye           ###   ########.fr       */
+/*   Updated: 2021/09/10 19:20:17 by sameye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	setfracttype(t_mlx *mlx, t_complex *z, t_complex *c, t_pix *p)
 	if (mlx->frac.frac == 'j')
 	{
 		*z = pixtocplx(p, mlx);
-		*c = (t_complex){.r = C_RE, .i = C_IM};
+		*c = (t_complex){.r = mlx->frac.c_re, .i = mlx->frac.c_im};
 	}
 }
 
@@ -45,15 +45,9 @@ int	fracparse(char *frac, t_mlx *mlx)
 int	entrycheck(int ac, char **av, t_mlx *mlx)
 {
 	if (ac < 2)
-	{
-		ft_putstr_fd(PARAM_LIST, 1);
-		return (0);
-	}
+		return (print_params());
 	if (fracparse(av[1], mlx) == 0)
-	{
-		ft_putstr_fd(PARAM_LIST, 1);
-		return (0);
-	}
+		return (print_params());
 	return (1);
 }
 
@@ -64,6 +58,7 @@ int	main(int ac, char **av)
 	if (entrycheck(ac, av, &mlx) == 0)
 		return (0);
 	init_mlx(&mlx);
+	get_params(ac, av, &mlx);
 	init_view(&mlx);
 	computeprint(&mlx);
 	mlx_key_hook(mlx.win, keyboard_press, &mlx);
